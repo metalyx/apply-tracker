@@ -1,7 +1,7 @@
-const mongoose = require('mongoose');
-const bcrypt = require('bcryptjs');
+import { Schema, model } from 'mongoose';
+import bcrypt from 'bcryptjs';
 
-const User = new mongoose.Schema({
+const User = new Schema({
     email: {
         type: String,
         required: true,
@@ -22,7 +22,7 @@ const User = new mongoose.Schema({
 });
 
 // A pre-save hook to hash the password before saving it to the database
-userSchema.pre('save', async function (next) {
+User.pre('save', async function (next) {
     const user = this;
 
     if (!user.isModified('password')) {
@@ -40,4 +40,4 @@ userSchema.pre('save', async function (next) {
     }
 });
 
-export default mongoose.model('User', User);
+export default model('User', User);

@@ -1,15 +1,15 @@
-const mongoose = require('mongoose');
+import { Schema, model } from 'mongoose';
 
-const Application = new mongoose.Schema({
+const Application = new Schema({
     // don't forget to check applicationType for existence
     applicationType: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: 'ApplicationType',
         required: true,
     },
     // don't forget to check user for existence
     user: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: 'User',
         required: true,
     },
@@ -19,4 +19,4 @@ const Application = new mongoose.Schema({
     },
 });
 
-export default mongoose.model('Application', Application);
+export default model('Application', Application);
